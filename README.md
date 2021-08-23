@@ -1,8 +1,11 @@
 This Python project runs off a FLASK server
 Math API
-It will give you the following resutls
+It will give you the following results
 
-/min /max /avg /median /percentile
+/min /max /avg /median /percentile/n
+
 @required
-numOfParams : How many params youa re passing in the query string
+numOfParams : How many params you are passing in the query string/n
+
+@required
 listOfNumbers: Comma seperated list of numbers to perform calulations on
