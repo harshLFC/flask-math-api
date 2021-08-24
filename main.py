@@ -1,5 +1,6 @@
 from flask import Flask, request
 from statistics import quantiles
+import numpy as np
 
 app = Flask(__name__)
 
@@ -73,9 +74,16 @@ def median():
 
 @app.route("/percentile")
 def percentile():
-    # TODO
-
-    return "todo"
+    numOfParams = int(request.args.get("numOfParams"))
+    numbers = request.args.get("numbers")
+    listOfNumbers = numbers.split(",")
+    for i in range(0, numOfParams):
+        listOfNumbers[i] = int(listOfNumbers[i])
+    listOfNumbers.sort()
+    a = np.array(listOfNumbers)
+    q = int(request.args.get("quantifier"))
+    p = np.percentile(a, q)
+    return str(p)
 
 
 app.run(debug=True)
